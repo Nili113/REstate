@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 86px;
+    background-color: #fdfbf7;
+    color: #1b211e;
+  }
+
+  body {
+    background-color: #fdfbf7;
+    color: #1b211e;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, h4, .brand-font {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #132b21;
+  }
+
+  /* Remove default spinner arrows from number inputs across all browsers */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+@layer components {
+  /* Rich Brand Buttons from Reference */
+  .btn-brand-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-forest-800 text-white font-semibold text-sm border border-forest-800 shadow-md hover:bg-forest-900 hover:border-forest-900 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+
+  .btn-brand-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gold-500 text-white font-semibold text-sm border border-gold-500 shadow-md hover:bg-gold-600 hover:border-gold-600 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+
+  .btn-brand-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-transparent text-forest-800 font-semibold text-sm border-2 border-forest-800 hover:bg-forest-800 hover:text-white hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+
+  .btn-brand-outline-gold {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-transparent text-gold-600 font-semibold text-sm border-2 border-gold-500 hover:bg-gold-500 hover:text-white hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200;
+  }
+
+  /* Badges */
+  .badge-forest {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-forest-100 text-forest-800 border border-forest-700/20 text-xs font-semibold;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-100 text-gold-600 border border-gold-500/30 text-xs font-semibold;
+  }
+
+  /* Luxury card styling */
+  .luxury-card {
+    background-color: #ffffff;
+    border: 1px solid #e3ddd2;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(18, 26, 22, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .luxury-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(30, 63, 48, 0.3);
+    box-shadow: 0 16px 36px rgba(18, 26, 22, 0.12);
+  }
+}

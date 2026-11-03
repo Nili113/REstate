@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# References & External assets requested to be ignored
+Reference/
+Reference/*
+
+# Agent skills & temporary taste-skill cache
+.agents/
+.taste-skill/
+
+# Heavy PDF documents & temporary extracted page scans (avoids 22MB+ git repository bloat)
+*.pdf
+Kenisha_Real_Estate_All_Documents.pdf
+pdf_pages/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Editor & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+

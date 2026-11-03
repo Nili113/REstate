@@ -1,235 +1,263 @@
 import React from 'react';
-import { ShieldCheck, MapPin, Phone, Award, Landmark, ArrowUp, Building2, CheckCircle2 } from 'lucide-react';
+import { 
+  ArrowUp, 
+  ArrowUpRight,
+  Phone, 
+  MapPin, 
+  ShieldCheck, 
+  FileText, 
+  Building2, 
+  CheckCircle2, 
+  Clock 
+} from 'lucide-react';
 import { COMPANY_INFO } from '../data/kenishaData';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenInquiry?: (subject?: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onOpenInquiry }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleInquiryClick = () => {
+    if (onOpenInquiry) {
+      onOpenInquiry('Footer CTA: Schedule Inspection');
+    } else {
+      const contactEl = document.getElementById('contact');
+      if (contactEl) {
+        contactEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
-    <footer className="bg-forest-950 text-ivory-200 border-t border-gold-500/30">
+    <footer className="bg-[#f8f6f0] border-t border-ivory-300">
       
-      {/* Top Banner with Official Stamp & Statutory Badges */}
-      <div className="border-b border-forest-800/80 py-10 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+      {/* 1. Curved Dark CTA Card (Inspired by Reference Banner) */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-8">
+        <div className="relative rounded-[2rem] sm:rounded-[2.5rem] bg-gradient-to-b from-[#183628] via-[#10251c] to-[#0a1811] border border-forest-800/60 px-6 sm:px-12 py-16 sm:py-20 text-center overflow-hidden shadow-2xl">
           
-          {/* Company Identity */}
-          <div className="flex items-center gap-4 sm:gap-5">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white p-1 shrink-0 shadow-md border-2 border-gold-500/50 flex items-center justify-center">
-              <img
-                src={COMPANY_INFO.sealImage}
-                alt="Kenisha Real Estate Official Seal"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div>
-              <div className="text-[11px] font-semibold text-gold-400 tracking-wide mb-0.5">
-                Government Registered • Companies Act 2006
-              </div>
-              <h3 className="brand-font text-xl sm:text-2xl font-bold text-white leading-tight">
-                {COMPANY_INFO.name}
-              </h3>
-              <p className="text-xs text-ivory-300 mt-0.5">
-                {COMPANY_INFO.nepaliName} • {COMPANY_INFO.registeredOfficeNepali}
-              </p>
-            </div>
-          </div>
+          {/* Subtle Top Radial Glow / Vignette */}
+          <div 
+            className="absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[320px] rounded-full pointer-events-none opacity-40 blur-3xl"
+            style={{
+              background: 'radial-gradient(circle, rgba(197, 155, 39, 0.4) 0%, rgba(30, 63, 48, 0.2) 50%, transparent 80%)'
+            }}
+          />
 
-          {/* Quick Credential Chips */}
-          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 text-xs">
-            <div className="px-3.5 py-2 rounded-xl bg-forest-900/90 border border-forest-700/80 text-ivory-200 flex items-center gap-2 shadow-sm">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Reg: <strong className="text-white">{COMPANY_INFO.registrationNo}</strong></span>
-            </div>
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h3 className="brand-font text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+              Ready to secure your land in Arjundhara?
+            </h3>
             
-            <div className="px-3.5 py-2 rounded-xl bg-forest-900/90 border border-forest-700/80 text-ivory-200 flex items-center gap-2 shadow-sm">
-              <Building2 className="w-4 h-4 text-gold-400 shrink-0" />
-              <span>PAN: <strong className="text-white">{COMPANY_INFO.panNo}</strong></span>
-            </div>
+            <p className="text-ivory-300 text-sm sm:text-base leading-relaxed mb-8 font-normal">
+              Directly consult with <strong>Miss Kenisha</strong> with verified cadastral boundaries, statutory clearances, and guided on-site parcel inspections.
+            </p>
 
-            <div className="px-3.5 py-2 rounded-xl bg-forest-900/90 border border-forest-700/80 text-ivory-200 flex items-center gap-2 shadow-sm">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Tax Clearance: <strong className="text-white">FY 2081/82</strong></span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Main Footer Links & Directory */}
-      <div className="py-14 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          
-          {/* Column 1: Executive & Leadership */}
-          <div>
-            <h4 className="brand-font text-base font-bold text-white mb-4 flex items-center gap-2">
-              <Landmark className="w-4 h-4 text-gold-400" />
-              <span>Leadership & Governance</span>
-            </h4>
-            <div className="text-xs text-ivory-300 space-y-2.5 leading-relaxed">
-              <p>
-                <strong className="text-white">Founder & Managing Director:</strong><br />
-                Miss Kenisha / Ranjita Dulal (रंजिता दुलाल)<br />
-                <span className="text-gold-400 font-semibold">100% Sole Equity Promoter</span>
-              </p>
-              <p>
-                <strong className="text-white">Permanent Origin:</strong> Maipokhari, Ilam-04<br />
-                <strong className="text-white">Headquarters:</strong> Arjundhara-06, Jhapa
-              </p>
-              <p className="text-[11px] text-ivory-400 pt-1">
-                Direct personal supervision of all land acquisitions, cadastral demarcation, and municipal clearances.
-              </p>
-            </div>
-          </div>
-
-          {/* Column 2: Active Planning Sectors */}
-          <div>
-            <h4 className="brand-font text-base font-bold text-white mb-4 flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-gold-400" />
-              <span>Planning Locations</span>
-            </h4>
-            <ul className="text-xs space-y-2.5 text-ivory-300 font-medium">
-              <li>
-                <a href="#sites" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Arjundhara-06 Mata Mandir Tol</span>
-                </a>
-              </li>
-              <li>
-                <a href="#sites" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Rana Gaun Plotted Settlement (Ward 08)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#sites" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Salbari Green Planning Sector (Ward 09)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#sites" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Sanischare – Arjundhara Linkage Parcels</span>
-                </a>
-              </li>
-              <li>
-                <a href="#calculator" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Terai Land Unit Converter (बीघा/कठ्ठा/धुर)</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Statutory Credentials */}
-          <div>
-            <h4 className="brand-font text-base font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="w-4 h-4 text-gold-400" />
-              <span>Public Documents</span>
-            </h4>
-            <ul className="text-xs space-y-2.5 text-ivory-300 font-medium">
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Certificate of Incorporation (324284)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Corporate PAN Certificate (619817794)</span>
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>CAMIS Electronic Government QR Record</span>
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Tax Clearance Certificate FY 2080/081</span>
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5">
-                  <span className="text-gold-500">•</span>
-                  <span>Tax Clearance Certificate FY 2081/082</span>
-                </a>
-              </li>
-              <li>
-                <a href="#credentials" className="hover:text-gold-400 transition-colors flex items-center gap-1.5 text-gold-400">
-                  <span>→</span>
-                  <span>29-Page Complete Legal Dossier</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 4: Office Coordinates */}
-          <div>
-            <h4 className="brand-font text-base font-bold text-white mb-4 flex items-center gap-2">
-              <Phone className="w-4 h-4 text-gold-400" />
-              <span>Direct Office Access</span>
-            </h4>
-            <div className="text-xs text-ivory-300 space-y-3 leading-relaxed">
-              <div>
-                <strong className="text-white block mb-0.5">Physical Office:</strong>
-                <p className="text-ivory-300">
-                  Ward No. 06, Mata Mandir Tol,<br />
-                  Arjundhara Municipality, Jhapa, Nepal
-                </p>
-              </div>
-              <div>
-                <strong className="text-white block mb-0.5">Official Inquiries:</strong>
-                <p className="text-gold-400 font-bold">{COMPANY_INFO.phone}</p>
-              </div>
-              <div>
-                <strong className="text-white block mb-0.5">Visiting Hours:</strong>
-                <p className="text-ivory-300">
-                  Sun – Fri: 9:30 AM – 5:30 PM<br />
-                  Saturday: Guided Site Walks by Appointment
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Consumer Advisory & Anti-Fraud Notice */}
-        <div className="mt-12 p-5 rounded-2xl bg-forest-900/80 border border-gold-500/30 text-xs text-ivory-200 leading-relaxed shadow-sm flex items-start gap-3.5">
-          <ShieldCheck className="w-5 h-5 text-gold-400 shrink-0 mt-0.5" />
-          <div>
-            <strong className="text-gold-400 block mb-1">Consumer Advisory & Anti-Fraud Notice:</strong>
-            Kenisha Real Estate Pvt. Ltd. operates strictly through registered company accounts and formal legal documentation. We never request cash deposits through unverified intermediaries. All land deeds (लालपुर्जा / रजिस्ट्रेसन) are executed directly at the Land Revenue Office (मालपोत कार्यालय).
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-10 pt-6 border-t border-forest-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ivory-400">
-          <div>
-            © {new Date().getFullYear()} Kenisha Real Estate Pvt. Ltd. All rights reserved.
-          </div>
-          <div className="flex items-center gap-6">
-            <span>Reg. No. {COMPANY_INFO.registrationNo}</span>
-            <span>•</span>
-            <span>PAN {COMPANY_INFO.panNo}</span>
-            <span>•</span>
             <button
-              onClick={scrollToTop}
-              className="px-4 py-1.5 rounded-full bg-forest-900 hover:bg-forest-800 text-gold-400 transition-colors flex items-center gap-1.5 border border-forest-700/80 font-semibold"
-              title="Return to Top"
+              onClick={handleInquiryClick}
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-forest-950 font-bold text-sm hover:bg-gold-400 hover:text-forest-950 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0"
             >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
+              <span>Schedule On-Site Inspection</span>
+              <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
         </div>
-
       </div>
+
+      {/* 2. Floating Island Card Container */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pb-6 relative z-10">
+        <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-[0_20px_50px_rgba(20,30,24,0.06)] border border-[#e8e2d5]">
+          
+          {/* Main Directory Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
+            
+            {/* Left Brand & Corporate Identity Column */}
+            <div className="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                {/* Logo & Seal */}
+                <div className="flex items-center gap-3.5 mb-4">
+                  <div className="w-11 h-11 rounded-full overflow-hidden bg-white p-0.5 border border-gold-500/60 shadow-sm shrink-0 flex items-center justify-center">
+                    <img
+                      src={COMPANY_INFO.sealImage}
+                      alt="Kenisha Real Estate Seal"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <span className="brand-font text-lg font-bold text-forest-950 block leading-tight">
+                      Kenisha Real Estate
+                    </span>
+                    <span className="text-xs text-charcoal-500 font-medium">
+                      केनिसा रियल स्टेट प्रा. लि.
+                    </span>
+                  </div>
+                </div>
+
+                {/* Statutory Scope Summary */}
+                <p className="text-charcoal-600 text-xs sm:text-[13px] leading-relaxed mb-6 font-normal">
+                  Registered private limited company under the Companies Act 2006 (Reg #{COMPANY_INFO.registrationNo}, PAN {COMPANY_INFO.panNo}). Solely promoted and directed by Miss Kenisha (Ranjita Dulal).
+                </p>
+              </div>
+
+              {/* Direct Quick Badges */}
+              <div className="flex flex-wrap items-center gap-2.5 text-xs">
+                <a
+                  href={`tel:${COMPANY_INFO.phone}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-ivory-100 hover:bg-ivory-200 text-forest-950 border border-ivory-300 transition-colors font-medium"
+                >
+                  <Phone className="w-3.5 h-3.5 text-forest-800" />
+                  <span>{COMPANY_INFO.phone}</span>
+                </a>
+
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-ivory-100 hover:bg-ivory-200 text-forest-950 border border-ivory-300 transition-colors font-medium"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-forest-800" />
+                  <span>Arjundhara-06, Jhapa</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Link Columns */}
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8 text-xs">
+              
+              {/* Column 1: Planning Sectors */}
+              <div>
+                <h4 className="font-bold text-forest-950 text-xs uppercase tracking-wider mb-4">
+                  Planning Sites
+                </h4>
+                <ul className="space-y-2.5 text-charcoal-600">
+                  <li>
+                    <a href="#sites" className="hover:text-forest-900 transition-colors">
+                      Arjundhara-06 Mata Mandir
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#sites" className="hover:text-forest-900 transition-colors">
+                      Rana Gaun Sector (Ward 08)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#sites" className="hover:text-forest-900 transition-colors">
+                      Salbari Green Sector (Ward 09)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#calculator" className="hover:text-forest-900 transition-colors font-semibold text-forest-800">
+                      Terai Land Calculator
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 2: Statutory Dossier */}
+              <div>
+                <h4 className="font-bold text-forest-950 text-xs uppercase tracking-wider mb-4">
+                  Public Dossier
+                </h4>
+                <ul className="space-y-2.5 text-charcoal-600">
+                  <li>
+                    <a href="#credentials" className="hover:text-forest-900 transition-colors">
+                      Company Incorporation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#credentials" className="hover:text-forest-900 transition-colors">
+                      Corporate PAN Certificate
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#credentials" className="hover:text-forest-900 transition-colors">
+                      Tax Clearance (FY 2081/82)
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#credentials" className="hover:text-forest-900 transition-colors">
+                      CAMIS QR Government Record
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#credentials" className="hover:text-forest-900 transition-colors font-semibold text-gold-600">
+                      29-Page Legal Archive →
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Column 3: Corporate Office */}
+              <div className="col-span-2 sm:col-span-1">
+                <h4 className="font-bold text-forest-950 text-xs uppercase tracking-wider mb-4">
+                  Governance
+                </h4>
+                <ul className="space-y-2.5 text-charcoal-600">
+                  <li>
+                    <a href="#founder" className="hover:text-forest-900 transition-colors">
+                      Miss Kenisha (Ranjita Dulal)
+                    </a>
+                  </li>
+                  <li>
+                    <span className="text-charcoal-500">
+                      Sole Promoter (100% Equity)
+                    </span>
+                  </li>
+                  <li>
+                    <span className="text-charcoal-500">
+                      Sun–Fri: 9:30 AM – 5:30 PM
+                    </span>
+                  </li>
+                  <li>
+                    <span className="text-charcoal-500">
+                      Official Bank Accounts Only
+                    </span>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Thin Divider Line */}
+          <div className="border-t border-[#ede7db] my-8" />
+
+          {/* Sub-Footer Row */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal-500">
+            <div>
+              © {new Date().getFullYear()} Kenisha Real Estate Pvt. Ltd. All rights reserved.
+            </div>
+
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 font-medium">
+              <span>Reg #{COMPANY_INFO.registrationNo}</span>
+              <span>•</span>
+              <span>PAN {COMPANY_INFO.panNo}</span>
+              <span>•</span>
+              <button
+                onClick={scrollToTop}
+                className="hover:text-forest-900 transition-colors flex items-center gap-1 font-semibold text-forest-800"
+              >
+                <span>Back to Top</span>
+                <ArrowUp className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* 3. Ghost Typography Watermark (Inspired by "Graphy" in Reference) */}
+      <div 
+        aria-hidden="true" 
+        className="w-full overflow-hidden text-center select-none pointer-events-none -mt-10 sm:-mt-16 md:-mt-20 pb-4"
+      >
+        <span className="inline-block font-extrabold tracking-widest text-[#132b21]/[0.05] text-[6.5rem] sm:text-[11rem] md:text-[15rem] leading-none uppercase brand-font">
+          KENISHA
+        </span>
+      </div>
+
     </footer>
   );
 };

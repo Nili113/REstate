@@ -40,7 +40,7 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenInquiry={handleOpenInquiry} />
 
       {/* Action Modal */}
       <InquiryModal
